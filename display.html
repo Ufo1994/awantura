@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Awantura o... — Ekran</title>
+<link rel="stylesheet" href="./css/design-system.css">
+<link rel="stylesheet" href="./css/display.css">
+</head>
+<body>
+  <div class="bg-particles" id="particles"></div>
+
+  <main class="stage" id="stage">
+    <h1 class="title t-display" id="gameTitle">Awantura o Omegę</h1>
+
+    <div class="main-grid">
+      <section class="wheel-col">
+        <div class="wheel-stage">
+          <canvas id="wheel"></canvas>
+        </div>
+      </section>
+
+      <section class="board-col glass">
+        <div class="t-label board-head">Tablica wyników</div>
+        <div class="teams" id="teams"></div>
+        <div class="pool glass-gold" id="pool">
+          <span class="t-label">Pula pytania</span>
+          <span class="t-score pool-val" id="poolVal">0</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="status-bar glass" id="statusBar">Czekamy na rozpoczęcie gry…</div>
+  </main>
+
+  <!-- OVERLAY: PYTANIE / ODPOWIEDŹ -->
+  <div class="q-overlay" id="qOverlay">
+    <div class="q-inner">
+      <div class="t-category q-cat" id="qCat">Kategoria</div>
+      <div class="t-question q-text" id="qText">Pytanie…</div>
+
+      <div class="timer-wrap" id="timerWrap">
+        <svg class="timer-ring" viewBox="0 0 200 200" width="220" height="220">
+          <circle class="timer-track" cx="100" cy="100" r="90"></circle>
+          <circle class="timer-prog" id="timerProg" cx="100" cy="100" r="90"></circle>
+        </svg>
+        <div class="t-timer timer-num" id="timerNum">60</div>
+      </div>
+
+      <div class="answer-box" id="answerBox">
+        <div class="t-label">Odpowiedź</div>
+        <div class="t-answer" id="answerTxt"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERLAY: CZARNA SKRZYNKA -->
+  <div class="blackbox" id="blackbox">
+    <div class="bb-particles" id="bbParticles"></div>
+    <div class="bb-frame glass-gold">
+      <div class="bb-spark">✦</div>
+      <div class="t-display bb-title" id="bbTitle"></div>
+      <div class="bb-q">?</div>
+      <div class="t-body bb-sub">CO KRYJE SIĘ W ŚRODKU?</div>
+    </div>
+  </div>
+
+  <script type="module" src="./js/display.js"></script>
+</body>
+</html>
