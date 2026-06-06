@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Awantura o... — Panel Hosta</title>
+<link rel="stylesheet" href="./css/design-system.css">
+<link rel="stylesheet" href="./css/host.css">
+</head>
+<body>
+  <header class="topbar glass">
+    <div class="brand t-display">Awantura <span class="o">o...</span></div>
+    <div class="title-edit">
+      <label class="t-label">Tytuł gry</label>
+      <input class="host-input" id="titleInput" type="text" maxlength="80" value="Awantura o Omegę">
+    </div>
+    <div class="topbar-right">
+      <span class="phase-chip" id="phaseChip">idle</span>
+      <a class="link" href="./display.html" target="_blank" rel="noopener">Otwórz ekran ↗</a>
+      <button class="btn-ghost btn-danger" id="btnNewGame">Nowa gra</button>
+    </div>
+  </header>
+
+  <main class="host-grid">
+    <!-- KOŁO -->
+    <section class="panel glass">
+      <h2 class="t-label">Koło</h2>
+      <button class="btn-primary spin-btn" id="btnSpin">🎡 Zakręć kołem</button>
+      <div class="spun-result">
+        <span class="t-label">Ostatnio wylosowano</span>
+        <div class="spun-chip" id="spunChip">—</div>
+      </div>
+      <h3 class="t-label">Historia (ost. 5)</h3>
+      <ul class="history" id="history"></ul>
+    </section>
+
+    <!-- PYTANIE -->
+    <section class="panel glass">
+      <h2 class="t-label">Aktualne pytanie</h2>
+      <div class="q-box">
+        <div class="t-label q-cat" id="qCatHost">—</div>
+        <div class="q-text" id="qTextHost">Zakręć kołem i pokaż pytanie…</div>
+      </div>
+      <div class="answer-host blurred" id="answerHost">
+        <span class="t-label">Odpowiedź (tylko dla Ciebie)</span>
+        <div class="answer-val" id="answerHostVal">—</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" id="btnToggleAnswer">👁 Pokaż/ukryj (lokalnie)</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" id="btnShowQuestion">📺 Pokaż pytanie na ekranie</button>
+        <button class="btn-ghost" id="btnShowAnswer">✅ Pokaż odpowiedź na ekranie</button>
+      </div>
+
+      <h3 class="t-label">Timer</h3>
+      <div class="timer-box">
+        <div class="timer-display" id="timerDisplay">60</div>
+        <div class="timer-controls">
+          <button class="btn-ghost" id="btnTimerStart" title="Start">▶</button>
+          <button class="btn-ghost" id="btnTimerPause" title="Pauza">⏸</button>
+          <button class="btn-ghost" id="btnTimerReset" title="Reset">↺</button>
+        </div>
+      </div>
+
+      <h3 class="t-label">Sceny specjalne</h3>
+      <button class="btn-ghost btn-danger wide" id="btnBlackbox">🎁 Czarna Skrzynka</button>
+    </section>
+
+    <!-- DRUŻYNY + LICYTACJA -->
+    <section class="panel glass">
+      <h2 class="t-label">Drużyny</h2>
+      <div id="teamConfig"></div>
+      <button class="add-team-btn" id="addTeamBtn">+ Dodaj drużynę</button>
+      <div class="add-team-form" id="addTeamForm">
+        <div class="row">
+          <input class="host-input" id="addTeamName" type="text" maxlength="40" placeholder="Nazwa nowej drużyny">
+          <button class="btn-primary" id="addTeamConfirm">Dodaj</button>
+        </div>
+        <div class="swatches" id="addTeamSwatches"></div>
+      </div>
+
+      <h2 class="t-label" style="margin-top:18px">Licytacja</h2>
+      <div class="pool-box glass-gold">
+        <span class="t-label">Pula pytania</span>
+        <span class="pool-val" id="poolVal">0</span>
+      </div>
+      <div id="bidRows"></div>
+      <h3 class="t-label">Przekaż pulę do:</h3>
+      <div class="award-grid" id="awardGrid"></div>
+    </section>
+  </main>
+
+  <!-- ZARZĄDZANIE -->
+  <section class="bottom glass">
+    <div class="bottom-col">
+      <h2 class="t-label">Baza pytań</h2>
+      <ul class="cat-list" id="catList"></ul>
+    </div>
+    <div class="bottom-col">
+      <h2 class="t-label">Wgraj pytania</h2>
+      <label class="upload-label" for="uploadJson">📄 Upload JSON
+        <input type="file" id="uploadJson" accept=".json" hidden></label>
+      <label class="upload-label" for="uploadCsv">📊 Upload CSV (kategoria,pytanie,odpowiedz)
+        <input type="file" id="uploadCsv" accept=".csv" hidden></label>
+      <p class="t-label" style="margin-top:8px;letter-spacing:.04em;text-transform:none">Maks. 5MB. Nadpisuje całą bazę.</p>
+    </div>
+    <div class="bottom-col">
+      <h2 class="t-label">Wskazówka</h2>
+      <p class="t-body" style="font-size:13px">Otwórz <strong>Widok Ekranu</strong> w drugim oknie tej samej przeglądarki i przeciągnij na projektor. Stan synchronizuje się automatycznie.</p>
+    </div>
+  </section>
+
+  <div class="toast-wrap" id="toasts"></div>
+
+  <script type="module" src="./js/host.js"></script>
+</body>
+</html>
